@@ -33,9 +33,7 @@ markdownMagic(markdownPath, config);
 ## Usage in markdown
 
 <!-- AUTO-GENERATED-CONTENT:START (LASTMODIFIED) -->
-```sh
-npm install --save-dev markdown-magic-install-command@1.2.0
-```
+**README.md** last modified Fri Jun 9 16:19:12 2017 -0700
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Options

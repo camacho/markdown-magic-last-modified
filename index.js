@@ -20,8 +20,8 @@ function LASTMODIFIED(content, _options = {}, config) {
 
   const relativeFilePath = path.relative(root, filePath);
   const cmd = `echo "$(git log -1 --format="%ad" -- "${ filePath }")"`;
-  const lastModified = execSync(cmd, { encoding: 'utf8'}).trim());
-  return [`**${ filepath }** last modified ${ lastModified }`];
+  const lastModified = execSync(cmd, { encoding: 'utf8'}).trim();
+  return [`**${ relativeFilePath }** last modified ${ lastModified }`];
 }
 
 module.exports = LASTMODIFIED;
