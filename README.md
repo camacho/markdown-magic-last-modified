@@ -22,8 +22,8 @@ const markdownMagic = require('markdown-magic');
 const config = {
   transforms: {
     LASTMODIFIED: require('./index.js'),
-  }
-}
+  },
+};
 
 const markdownPath = path.join(__dirname, 'README.md');
 markdownMagic(markdownPath, config);
@@ -33,7 +33,7 @@ markdownMagic(markdownPath, config);
 ## Usage in markdown
 
 <!-- AUTO-GENERATED-CONTENT:START (LASTMODIFIED) -->
-**README.md** last modified Fri Jun 9 16:19:12 2017 -0700
+**README.md** last modified Sat Mar 26 15:49:09 2022 +0100
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Options

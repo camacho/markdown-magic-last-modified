@@ -13,15 +13,14 @@ function LASTMODIFIED(content, _options = {}, config) {
     filePath = path.resolve(config.originalPath);
   }
 
-  const root = execSync(
-    'git rev-parse --show-toplevel',
-    { encoding: 'utf8' }
-  ).trim();
+  const root = execSync('git rev-parse --show-toplevel', {
+    encoding: 'utf8',
+  }).trim();
 
   const relativeFilePath = path.relative(root, filePath);
-  const cmd = `echo "$(git log -1 --format="%ad" -- "${ filePath }")"`;
-  const lastModified = execSync(cmd, { encoding: 'utf8'}).trim();
-  return [`**${ relativeFilePath }** last modified ${ lastModified }`];
+  const cmd = `echo "$(git log -1 --format="%ad" -- "${filePath}")"`;
+  const lastModified = execSync(cmd, { encoding: 'utf8' }).trim();
+  return [`**${relativeFilePath}** last modified ${lastModified}`];
 }
 
 module.exports = LASTMODIFIED;
