@@ -13,29 +13,32 @@ npm i markdown-magic markdown-magic-last-modified --save-dev
 See `example.js` for usage.
 
 <!-- AUTO-GENERATED-CONTENT:START (CODE:src=./example.js) -->
-<!-- The below code snippet is automatically added from ./example.js -->
+
 ```js
-const fs = require('fs');
-const path = require('path');
-const markdownMagic = require('markdown-magic');
+import path from 'path';
+import { markdownMagic } from 'markdown-magic';
+import LASTMODIFIED from './index.js';
 
 const config = {
+  matchWord: 'AUTO-GENERATED-CONTENT',
   transforms: {
-    LASTMODIFIED: require('./index.js'),
+    LASTMODIFIED,
   },
 };
 
-const markdownPath = path.join(__dirname, 'README.md');
-markdownMagic(markdownPath, config);
+const markdownPath = path.join(import.meta.dirname, 'README.md');
+await markdownMagic(markdownPath, config);
 ```
+
 <!-- AUTO-GENERATED-CONTENT:END *-->
 
 ## Usage in markdown
 
 <!-- AUTO-GENERATED-CONTENT:START (LASTMODIFIED) -->
+
 **README.md** last modified Sat Mar 26 15:49:09 2022 +0100
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Options
 
-* **file** (current file by default) - file to get last modified date from (relative to the Markdown file)
+- **file** (current file by default) - file to get last modified date from (relative to the Markdown file)

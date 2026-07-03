@@ -1,26 +1,39 @@
 {
   "name": "markdown-magic-last-modified",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Print the last modified date using git for a given file",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "docs": "node example.js && prettier --write README.md",
+    "prepublishOnly": "npm run docs",
+    "format": "prettier --write ."
+  },
+  "prettier": {
+    "singleQuote": true
+  },
   "license": "MIT",
   "repository": "https://github.com/camacho/markdown-magic-last-modified",
   "author": "Patrick Camacho <patrick@daftdevelopers.com>",
   "keywords": [
     "markdown-magic",
-    "lat modified",
+    "last modified",
     "plugin"
   ],
-  "main": "index.js",
-  "scripts": {
-    "docs": "node example.js",
-    "format": "prettier --single-quote --trailing-comma es5 --write index.js example.js",
-    "prepublish": "npm run docs"
-  },
   "peerDependencies": {
-    "markdown-magic": ">=0.1 <=2.x"
+    "markdown-magic": "^4"
   },
   "devDependencies": {
-    "markdown-magic": "^2.0.0",
-    "prettier": "^2.0.0"
+    "markdown-magic": "^4.0.0",
+    "prettier": "^3.0.0",
+    "vitest": "^4.0.0"
   }
 }
