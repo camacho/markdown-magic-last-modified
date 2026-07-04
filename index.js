@@ -1,26 +1,27 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import path from 'path';
+import { execFileSync } from 'child_process';
 
-function LASTMODIFIED(content, _options = {}, config) {
+export default function LASTMODIFIED({ content, options = {}, srcPath }) {
   let filePath;
 
-  const options = _options || {};
-
   if (options.file) {
-    filePath = path.resolve(path.dirname(config.originalPath), options.file);
+    filePath = path.resolve(path.dirname(srcPath), options.file);
   } else {
-    filePath = path.resolve(config.originalPath);
+    filePath = path.resolve(srcPath);
   }
 
-  const root = execSync('git rev-parse --show-toplevel', {
+  const root = execFileSync('git', ['rev-parse', '--show-toplevel'], {
     encoding: 'utf8',
   }).trim();
 
   const relativeFilePath = path.relative(root, filePath);
-  const cmd = `echo "$(git log -1 --format="%ad" -- "${filePath}")"`;
-  const lastModified = execSync(cmd, { encoding: 'utf8' }).trim();
-  return [`**${relativeFilePath}** last modified ${lastModified}`];
-}
+  const lastModified = execFileSync(
+    'git',
+    ['log', '-1', '--format=%ad', '--', filePath],
+    { encoding: 'utf8' },
+  ).trim();
 
-module.exports = LASTMODIFIED;
+  if (!lastModified) return content;
+
+  return `**${relativeFilePath}** last modified ${lastModified}`;
+}
