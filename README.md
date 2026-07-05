@@ -1,3 +1,5 @@
+> **📦 This package has moved.** It now lives in the [markdown-magic-plugins](https://github.com/camacho/markdown-magic-plugins) monorepo at [`packages/last-modified`](https://github.com/camacho/markdown-magic-plugins/tree/main/packages/last-modified). This repository is archived; issues and contributions go to the monorepo.
+
 # Install command plugin
 
 Add install command to markdown files via [markdown-magic](https://github.com/DavidWells/markdown-magic)
